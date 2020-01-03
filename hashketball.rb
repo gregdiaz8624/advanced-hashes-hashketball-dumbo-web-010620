@@ -140,3 +140,43 @@ def game_hash
 
 }
 end
+
+def num_points_scored(player_name)
+  #Goes through hash, then home away, then names, colors, players
+  game_hash.each do |location, team_data|
+      #Goes through players, then a name and its data
+      team_data[:players].each do |name, data|
+      if name == player_name
+        return data[:points]
+      end
+    end
+    end
+end
+
+def shoe_size(player_name)
+  #Goes through hash, then home away, then names, colors, players
+  game_hash.each do |location, team_data|
+    #Goes through players then a name and its data
+    team_data[:players].each do |name, data|
+      if name == player_name
+        return data[:shoe]
+      end
+    end
+  end
+end
+
+def team_colors(team)
+  #Goes through hash, then home away, then names, colors, players
+  game_hash.each do |location, team_data|
+    #If names, colors, players[:team_name] = argument
+    if team_data[:team_name] == team
+      return team_data[:colors]
+    end
+  end
+end
+
+def team_names
+  game_hash.map do |location, team_data|
+    team_data[:team_name]
+  end
+end
